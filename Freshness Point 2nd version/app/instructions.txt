@@ -1,0 +1,5 @@
+Replace rzp_test_* keys with your live rzp_live_* keys in both razorpay.config.js and index.html
+Complete Razorpay KYC on the dashboard
+Deploy /api/create-razorpay-order as a serverless function (works out-of-the-box on Vercel) with environment variables for the keys
+Never commit razorpay.config.js (now gitignored)
+If the phone number changes, update it in 7 files (Navbar, Hero, Outlets, Footer, StickyCTA, cart.js, index.html)

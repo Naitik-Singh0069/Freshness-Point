@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 34 83% 96%; /* cream */
+    --foreground: 0 0% 11%; /* ink */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+    --primary: 37 92% 47%; /* saffron */
+    --primary-foreground: 0 0% 11%;
+    --secondary: 120 28% 14%; /* forest */
+    --secondary-foreground: 34 83% 96%;
+    --muted: 36 33% 90%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 37 92% 47%;
+    --accent-foreground: 0 0% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 33% 85%;
+    --input: 36 33% 85%;
+    --ring: 37 92% 47%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-cream text-ink font-ui antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Focus states for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-none ring-2 ring-saffron ring-offset-2 ring-offset-cream rounded-sm;
+  }
+}
+
+@layer components {
+  .price-tag {
+    @apply inline-block px-3 py-1 bg-saffron text-forest font-display font-bold text-lg rounded-sm transform -rotate-2 border border-saffron-dark/20 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-saffron text-forest font-ui font-bold text-base rounded-full shadow-saffron-glow transition-all duration-300 hover:bg-saffron-dark hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-forest/30 text-forest font-ui font-semibold text-base rounded-full transition-all duration-300 hover:bg-forest hover:text-cream active:scale-[0.98];
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-cream/30 text-cream font-ui font-semibold text-base rounded-full transition-all duration-300 hover:bg-cream hover:text-forest active:scale-[0.98];
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white font-ui font-bold rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-md;
+  }
+
+  .badge-green {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-forest-mid text-cream text-xs font-ui font-semibold rounded-full border border-forest-mid/50;
+  }
+
+  .badge-amber {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-saffron text-forest text-xs font-ui font-bold rounded-full shadow-sm;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-28 px-4 sm:px-6 lg:px-8;
+  }
+
+  .card-base {
+    @apply bg-white rounded-2xl transition-all duration-300 border border-forest/5 shadow-sm;
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

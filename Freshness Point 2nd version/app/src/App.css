@@ -1,0 +1,6 @@
+/* App-specific styles — Tailwind handles the bulk */
+
+/* Safe area for mobile */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
