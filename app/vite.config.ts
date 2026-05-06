@@ -5,8 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Freshness-Point/',
   plugins: [inspectAttr(), react()],
+  base: '/Freshness-Point/',
   server: {
     port: 3000,
   },
@@ -15,4 +15,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  define: {
+    'import.meta.env.BASE_URL': JSON.stringify('/Freshness-Point/')
+  }
 });
