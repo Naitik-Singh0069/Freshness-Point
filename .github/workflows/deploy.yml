@@ -24,6 +24,21 @@ jobs:
           npm install
           npm run build
 
+      - name: Fix image paths
+        run: |
+          find ./app/dist -name "*.js" -exec sed -i 's|"/hero-food.jpg"|"/Freshness-Point/hero-food.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/hero-lassi.jpg"|"/Freshness-Point/hero-lassi.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/interior-cafe.jpg"|"/Freshness-Point/interior-cafe.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/location-lucknow.jpg"|"/Freshness-Point/location-lucknow.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/location-pratapgarh.jpg"|"/Freshness-Point/location-pratapgarh.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-burger.jpg"|"/Freshness-Point/menu-burger.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-chowmein.jpg"|"/Freshness-Point/menu-chowmein.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-cold-coffee.jpg"|"/Freshness-Point/menu-cold-coffee.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-fried-rice.jpg"|"/Freshness-Point/menu-fried-rice.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-pizza.jpg"|"/Freshness-Point/menu-pizza.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/menu-tea.jpg"|"/Freshness-Point/menu-tea.jpg"|g' {} +
+          find ./app/dist -name "*.js" -exec sed -i 's|"/viral-uncle.png"|"/Freshness-Point/viral-uncle.png"|g' {} +
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
