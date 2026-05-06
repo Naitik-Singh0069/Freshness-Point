@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Freshness Point — Premium vegetarian street food from Pratapgarh to Lucknow. Made fresh daily with no preservatives." />
+    <title>Freshness Point — Fresh Vegetarian Food in Lucknow & Pratapgarh</title>
+    
+    <!-- Google Fonts: Fraunces & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./cart.css" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Restaurant",
+          "@id": "https://freshnesspoint.in/#restaurant",
+          "name": "Freshness Point",
+          "image": "https://freshnesspoint.in/interior-cafe.jpg",
+          "servesCuisine": "Indian Vegetarian Fast Food",
+          "priceRange": "₹",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "312"
+          },
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "Crystal Cox Ajanta Tower, Ashiyana",
+              "addressLocality": "Lucknow",
+              "addressRegion": "UP",
+              "addressCountry": "IN"
+            },
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "Sangipur, in front of LIC office",
+              "addressLocality": "Pratapgarh",
+              "addressRegion": "UP",
+              "addressCountry": "IN"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/Freshness-Point/assets/index-DKO1c0qL.js"></script>
+    <link rel="stylesheet" crossorigin href="/Freshness-Point/assets/index--Q43l4BZ.css">
+  </head>
+  <body class="bg-cream text-ink font-ui">
+    <div id="root"></div>
+
+    <div class="fp-cart-fab-wrap">
+      <button type="button" id="fp-cart-fab" class="fp-cart-fab" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="currentColor">
+          <path
+            d="M8 8V6a4 4 0 1 1 8 0v2h3a1 1 0 0 1 1 1l1 12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1L5 9a1 1 0 0 1 1-1h2zm2 0h4V6a2 2 0 1 0-4 0v2z"
+          />
+        </svg>
+        <span id="fp-cart-badge" class="fp-cart-badge fp-cart-badge--hidden">0</span>
+      </button>
+    </div>
+
+    <div
+      id="fp-cart-drawer-backdrop"
+      class="fp-cart-drawer-backdrop"
+      aria-hidden="true"
+    ></div>
+    <aside
+      id="fp-cart-drawer"
+      class="fp-cart-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="fp-cart-drawer-title"
+      aria-hidden="true"
+    >
+      <div class="fp-cart-drawer-header">
+        <h2 id="fp-cart-drawer-title" class="fp-cart-drawer-title">Your Order</h2>
+        <button type="button" id="fp-cart-drawer-close" class="fp-cart-drawer-close" aria-label="Close cart">
+          ✕
+        </button>
+      </div>
+      <div id="fp-cart-drawer-body" class="fp-cart-drawer-body"></div>
+      <div id="fp-cart-drawer-footer" class="fp-cart-drawer-footer">
+        <div class="fp-cart-drawer-divider"></div>
+        <div class="fp-cart-subtotal-row">
+          <span>Subtotal</span>
+          <span id="fp-cart-drawer-subtotal">₹0</span>
+        </div>
+        <p class="fp-cart-delivery-note">Delivery charges will be confirmed by the restaurant</p>
+        <button type="button" id="fp-cart-proceed" class="fp-cart-btn-primary">Proceed to Checkout</button>
+      </div>
+    </aside>
+
+    <div
+      id="fp-checkout-overlay"
+      class="fp-checkout-overlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="fp-checkout-overlay-title"
+    >
+      <div class="fp-checkout-inner">
+        <h2 id="fp-checkout-overlay-title" class="fp-checkout-sr-only">Checkout</h2>
+        <div class="fp-checkout-steps" aria-hidden="false">
+          <span class="fp-checkout-step-pill" data-fp-checkout-step data-step="1">Step 1</span>
+          <span class="fp-checkout-step-arrow" aria-hidden="true">→</span>
+          <span class="fp-checkout-step-pill" data-fp-checkout-step data-step="2">Step 2</span>
+          <span class="fp-checkout-step-arrow" aria-hidden="true">→</span>
+          <span class="fp-checkout-step-pill" data-fp-checkout-step data-step="3">Step 3</span>
+        </div>
+
+        <div id="fp-co-panel-1" class="fp-checkout-panel fp-checkout-panel--active">
+          <h3>Delivery details</h3>
+          <div class="fp-checkout-field">
+            <label for="fp-co-fullname">Full Name</label>
+            <input id="fp-co-fullname" name="fullname" type="text" autocomplete="name" required />
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-mobile">Mobile Number</label>
+            <input id="fp-co-mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" required />
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-city">City</label>
+            <select id="fp-co-city" name="city" required>
+              <option value="">Select city</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Pratapgarh">Pratapgarh</option>
+            </select>
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-address">Full Delivery Address</label>
+            <textarea id="fp-co-address" name="address" rows="3" required></textarea>
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-landmark">Landmark <span class="fp-checkout-muted">(optional)</span></label>
+            <input
+              id="fp-co-landmark"
+              name="landmark"
+              type="text"
+              autocomplete="street-address"
+              placeholder="e.g. Near City Mall, Opp. Blue Building"
+            />
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-pincode">Pincode</label>
+            <input id="fp-co-pincode" name="pincode" type="text" inputmode="numeric" maxlength="6" required />
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-field">
+            <label for="fp-co-notes">Special Instructions <span class="fp-checkout-muted">(optional)</span></label>
+            <textarea
+              id="fp-co-notes"
+              name="notes"
+              rows="2"
+              placeholder="Any specific requests? e.g. extra spicy, less oil, pack separately"
+            ></textarea>
+            <p class="fp-checkout-error" role="alert"></p>
+          </div>
+          <div class="fp-checkout-actions">
+            <button type="button" id="fp-co-continue-1" class="fp-checkout-btn-next fp-checkout-btn-stretch">
+              Continue
+            </button>
+          </div>
+        </div>
+
+        <div id="fp-co-panel-2" class="fp-checkout-panel" hidden>
+          <h3>Order summary &amp; payment</h3>
+          <div id="fp-co-del-summary" class="fp-checkout-summary-block"></div>
+          <div id="fp-co-order-lines" class="fp-checkout-order-lines"></div>
+          <div class="fp-checkout-order-line">
+            <span>Subtotal</span>
+            <span id="fp-co-subtotal-val">₹0</span>
+          </div>
+          <p class="fp-cart-delivery-note" style="margin: 0.75rem 0">Delivery charges will be confirmed by the restaurant</p>
+          <div class="fp-checkout-grand-total">
+            <span>Grand total</span>
+            <span id="fp-co-grand-val">₹0</span>
+          </div>
+
+          <div id="fp-co-pay-cancel-msg" class="fp-checkout-inline-msg"></div>
+
+          <p style="font-weight: 600; margin: 1rem 0 0.5rem; font-size: 0.9rem">Payment method</p>
+          <div class="fp-checkout-payment-options">
+            <label class="fp-checkout-pay-card fp-checkout-pay-card--selected" data-fp-pay-card data-pay-method="cod">
+              <input type="radio" name="fp-co-pay" id="fp-co-pay-cod" value="cod" checked />
+              <span class="fp-checkout-pay-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="6" width="20" height="14" rx="2" />
+                  <path d="M2 10h20" />
+                </svg>
+              </span>
+              <span class="fp-checkout-pay-card-body">
+                <strong>Cash on Delivery (COD)</strong>
+                <span>Pay when your order arrives</span>
+              </span>
+            </label>
+            <label class="fp-checkout-pay-card" data-fp-pay-card data-pay-method="online">
+              <input type="radio" name="fp-co-pay" id="fp-co-pay-online" value="online" />
+              <span class="fp-checkout-pay-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <path d="M12 18h.01" />
+                </svg>
+              </span>
+              <span class="fp-checkout-pay-card-body">
+                <strong>Pay Online (UPI / Card / Wallet)</strong>
+                <span>Secure payment via Razorpay</span>
+                <span class="fp-checkout-pay-sublabel">You&apos;ll complete payment in a secure Razorpay window</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="fp-checkout-actions">
+            <button type="button" id="fp-co-back-2" class="fp-checkout-btn-back">Back</button>
+            <button type="button" id="fp-co-place-order" class="fp-checkout-btn-next">Place Order</button>
+          </div>
+        </div>
+
+        <div id="fp-co-panel-success" class="fp-checkout-panel fp-checkout-success" hidden>
+          <div class="fp-checkout-success-check-wrap">
+            <div id="fp-co-success-check" class="fp-checkout-success-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 12l4 4 8-8" />
+              </svg>
+            </div>
+          </div>
+          <h3>Order Placed!</h3>
+          <div id="fp-co-success-summary" class="fp-checkout-success-summary"></div>
+          <p>We&apos;ll WhatsApp you a confirmation shortly</p>
+          <p class="fp-checkout-cancel-note">
+            To cancel, call or WhatsApp us at +91 91293 83812.
+          </p>
+          <button type="button" id="fp-co-back-home" class="fp-cart-btn-primary">Back to Home</button>
+        </div>
+
+        <div id="fp-co-panel-error" class="fp-checkout-panel fp-checkout-error-screen" hidden>
+          <h3 id="fp-co-error-title">Payment failed</h3>
+          <p id="fp-co-error-detail" class="fp-checkout-error-code" role="alert"></p>
+          <div class="fp-checkout-actions" style="margin-top: 1.25rem">
+            <button type="button" id="fp-co-retry-pay" class="fp-checkout-btn-next" style="flex: 1">Retry Payment</button>
+            <button type="button" id="fp-co-error-to-cod" class="fp-checkout-btn-back" style="flex: 1">
+              Switch to COD
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__FP_RAZORPAY_KEY_ID__ = "rzp_test_YOUR_KEY_ID_HERE";
+    </script>
+    <script src="./cart.js" defer></script>
+  </body>
+</html>
